@@ -7,30 +7,30 @@
     /* ===== 1) OS PRODUTOS: troque aqui quando a Juliana comprar o estoque =====
        fotos: códigos das fotos do Unsplash (ilustrativas) · conj = conjunto · sut = sutiã · cal = calcinha */
     const PRODUTOS = [
-        { id: 'perola', nome: 'Pérola Rosé', tecido: 'Renda branca e rosé', grupo: 'claras', cores: ['#FFFFFF', '#F3C9CC'], selo: 'Mais desejado',
-          fotos: ['1644083598521-77e1b4f1a379', '1644083589204-4a4ba86f1a37'], conj: 139.9, sut: 89.9, cal: 54.9,
-          desc: 'Renda branca com toque rosé e alças delicadas. Romântico do jeito certo.' },
-        { id: 'agua', nome: 'Água-Marinha', tecido: 'Renda turquesa', grupo: 'coloridas', cores: ['#7FD3CF'], selo: 'Novo',
-          fotos: ['1778863663181-2ae9f04df79f', '1778863663081-7811c015d7df', '1778863663049-5540aa1da253'], conj: 129.9, sut: 84.9, cal: 49.9,
-          desc: 'Cor de mar calmo em renda floral. Leve, fresca e cheia de charme.' },
-        { id: 'desejo', nome: 'Desejo', tecido: 'Renda preta e vermelha', grupo: 'pretas', cores: ['#1E1A18', '#C0242F'], selo: '',
-          fotos: ['1625023489823-c9c1e36d6f2b', '1778430305834-68044213a39c'], conj: 149.9, sut: 94.9, cal: 59.9,
-          desc: 'Renda preta com detalhes em vermelho. Para noites que ficam na memória.' },
-        { id: 'encanto', nome: 'Encanto', tecido: 'Bralette de renda', grupo: 'claras', cores: ['#B9B2AE'], selo: 'Conforto',
-          fotos: ['1709422122379-79776f76bd87'], conj: 109.9, sut: 69.9, cal: 44.9,
-          desc: 'Bralette sem bojo, macio e confortável. Bonito até pro dia a dia.' },
-        { id: 'paixao', nome: 'Paixão', tecido: 'Renda vermelha', grupo: 'coloridas', cores: ['#C0242F'], selo: '',
-          fotos: ['1642945680515-faada4c0ca7b'], conj: 139.9, sut: 89.9, cal: 54.9,
-          desc: 'Vermelho intenso em renda transparente. Pra quem gosta de chamar atenção.' },
-        { id: 'meia-noite', nome: 'Meia-Noite', tecido: 'Renda azul-marinho', grupo: 'coloridas', cores: ['#1F2A55'], selo: '',
-          fotos: ['1642945667252-c0a68e4c2904'], conj: 119.9, sut: 74.9, cal: 49.9,
-          desc: 'Azul profundo com renda fina. Elegante, misterioso e diferente.' },
-        { id: 'seducao', nome: 'Sedução', tecido: 'Renda preta transparente', grupo: 'pretas', cores: ['#1E1A18'], selo: '',
-          fotos: ['1568663521381-33b7c467fda0'], conj: 139.9, sut: 89.9, cal: 54.9,
-          desc: 'O clássico preto de renda, com cintura alta que valoriza o corpo.' },
-        { id: 'essencial', nome: 'Essencial', tecido: 'Microfibra e renda', grupo: 'pretas', cores: ['#1E1A18'], selo: '',
-          fotos: ['1626781232026-32a00f19ed5f'], conj: 99.9, sut: 64.9, cal: 39.9,
-          desc: 'Simples, confortável e lindo. A peça que combina com tudo.' }
+        { id: 'rose', nome: 'Rosé Cetim', tecido: 'Cetim com renda', grupo: 'claras', cores: ['#E8C7BE'], selo: 'Mais desejado',
+          fotos: ['1594631761754-09569bd41e54', '1594631775771-890a902ae42d', '1594631767857-52af186837a5', '1594631773033-814817f000e8'], conj: 159.9, sut: 99.9, cal: 64.9,
+          desc: 'Alcinha e shortinho em cetim rosé com acabamento de renda. Delicado, macio e lindo pra dormir ou presentear.' },
+        { id: 'nude', nome: 'Nude Essencial', tecido: 'Bralette de microfibra', grupo: 'claras', cores: ['#D9B9A4'], selo: 'Conforto',
+          fotos: ['1660070607601-f7d0234665c4', '1633699124189-17c808027f4a'], conj: 99.9, sut: 64.9, cal: 39.9,
+          desc: 'Sem bojo e sem costuras aparentes. Some debaixo da roupa e abraça o corpo o dia inteiro.' },
+        { id: 'champagne', nome: 'Champagne', tecido: 'Renda floral', grupo: 'claras', cores: ['#E9D3B8'], selo: 'Novo',
+          fotos: ['1568441556126-f36ae0900180'], conj: 129.9, sut: 84.9, cal: 49.9,
+          desc: 'Renda floral em tom champagne. Clássico, feminino e combina com tudo.' },
+        { id: 'bordo', nome: 'Bordô', tecido: 'Bralette de renda', grupo: 'coloridas', cores: ['#7D1F33'], selo: '',
+          fotos: ['1572109754335-3807540beef2'], conj: 129.9, sut: 84.9, cal: 49.9,
+          desc: 'Renda bordô com alças finas cruzadas. Elegante e cheia de personalidade.' },
+        { id: 'noite', nome: 'Noite', tecido: 'Renda preta', grupo: 'pretas', cores: ['#1E1A18'], selo: '',
+          fotos: ['1599836641623-a596a2c44abc'], conj: 139.9, sut: 89.9, cal: 54.9,
+          desc: 'Renda preta com desenho floral. O preto que nunca sai de moda.' },
+        { id: 'royal', nome: 'Azul Royal', tecido: 'Renda azul', grupo: 'coloridas', cores: ['#2340A8'], selo: '',
+          fotos: ['1620228681518-5f0e3e29940d'], conj: 129.9, sut: 84.9, cal: 49.9,
+          desc: 'Azul vibrante em renda delicada. Pra sair do óbvio com muita elegância.' },
+        { id: 'branco', nome: 'Branco Puro', tecido: 'Bralette canelado', grupo: 'claras', cores: ['#FFFFFF'], selo: '',
+          fotos: ['1622116756680-fee39c84f9bd'], conj: 99.9, sut: 64.9, cal: 39.9,
+          desc: 'Branco, macio e confortável, com alças finas. Básico do jeito mais bonito.' },
+        { id: 'classico', nome: 'Clássico Preto', tecido: 'Tule e microfibra', grupo: 'pretas', cores: ['#1E1A18'], selo: '',
+          fotos: ['1572358764342-612d02e2d2d2'], conj: 119.9, sut: 74.9, cal: 44.9,
+          desc: 'Preto com detalhe de tule. Sofisticado e confortável pra qualquer ocasião.' }
     ];
     const TAM_SUTIA = ['40', '42', '44', '46', '48'];
     const TAM_CALCINHA = ['P', 'M', 'G', 'GG'];
@@ -47,13 +47,14 @@
         const preco = tipo === 'conjunto'
             ? `<span class="preco">Conjunto ${real(p.conj)}</span><span class="avulso">ou sutiã ${real(p.sut)} · calcinha ${real(p.cal)}</span>`
             : `<span class="preco">${nomeTipo[tipo]} ${real(precoDe(p, tipo))}</span><span class="avulso">conjunto completo ${real(p.conj)}</span>`;
-        return `<button class="produto revelar" type="button" data-id="${p.id}" data-tipo="${tipo}">
+        return `<article class="produto revelar" data-id="${p.id}" data-tipo="${tipo}">
             <div class="fotos">${p.selo ? `<span class="selo">${p.selo.toUpperCase()}</span>` : ''}
                 <img src="${foto(p.fotos[0], 700, 933)}" alt="${p.nome}, ${p.tecido}" loading="lazy">${f2}
-                <span class="rapido">VER A PEÇA</span></div>
+                <span class="rapido">VER DETALHES</span></div>
             <div class="info"><span class="tecido">${p.tecido}</span><h3>${p.nome}</h3>${preco}
                 <span class="cores">${p.cores.map(c => `<i style="background:${c}"></i>`).join('')}</span></div>
-        </button>`;
+            <button class="btn comprar" type="button">Comprar</button>
+        </article>`;
     }
 
     /* ===== 3) APARECER AO ROLAR ===== */
@@ -121,6 +122,15 @@
             pontos.onclick = e => { const b = e.target.closest('button'); if (!b) return; ir([...pontos.children].indexOf(b)); reiniciar(); };
             const reiniciar = () => { clearInterval(timerCapa); timerCapa = setInterval(() => ir(atual + 1), 6000); };
             ir(0); reiniciar();
+        }
+        const petalas = $('#petalas');
+        if (petalas && !petalas.children.length) for (let i = 0; i < 14; i++) {
+            const p = document.createElement('i');
+            p.style.left = Math.random() * 100 + '%';
+            p.style.animationDuration = 10 + Math.random() * 10 + 's';
+            p.style.animationDelay = -Math.random() * 18 + 's';
+            p.style.setProperty('--x', (Math.random() * 160 - 80) + 'px');
+            petalas.appendChild(p);
         }
         const coracao = $('#coracao');
         if (coracao) coracao.onclick = () => mostrar('Para Juliana, com todo o amor do Arnold ♡');
@@ -223,6 +233,19 @@
     let sacola = [];
     try { sacola = JSON.parse(localStorage.getItem('ju-sacola')) || []; } catch (e) { sacola = []; }
     const guardar = () => { try { localStorage.setItem('ju-sacola', JSON.stringify(sacola)); } catch (e) { } };
+    function escolhaOk() {
+        const aviso = $('#j-aviso');
+        if (escolha.tipo !== 'calcinha' && !escolha.sutia) { aviso.textContent = 'Escolha o tamanho do sutiã'; return false; }
+        if (escolha.tipo !== 'sutia' && !escolha.calcinha) { aviso.textContent = 'Escolha o tamanho da calcinha'; return false; }
+        return true;
+    }
+    $('#j-agora').onclick = e => {
+        if (!escolhaOk()) { e.preventDefault(); return; }
+        const p = atual;
+        const tam = [escolha.tipo !== 'calcinha' ? 'Sutiã ' + escolha.sutia : '', escolha.tipo !== 'sutia' ? 'Calcinha ' + escolha.calcinha : ''].filter(Boolean).join(' · ');
+        const msg = `Olá, Juliana! Quero comprar na Ju Intimates ♡\n\n• 1x ${nomeTipo[escolha.tipo]} ${p.nome} (${tam}) – ${real(precoDe(p, escolha.tipo))}\n\nPode me passar as formas de pagamento e o frete?`;
+        $('#j-agora').href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(msg);
+    };
     $('#j-adicionar').onclick = () => {
         const aviso = $('#j-aviso');
         if (escolha.tipo !== 'calcinha' && !escolha.sutia) { aviso.textContent = 'Escolha o tamanho do sutiã'; return; }
