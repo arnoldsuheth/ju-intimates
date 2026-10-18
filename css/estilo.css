@@ -106,6 +106,7 @@ button { font-family: inherit; color: inherit; }
 /* ===== BANNERS ===== */
 .banner { position: relative; overflow: hidden; background: var(--bege); }
 .banner .foto { position: absolute; inset: 0; }
+.banner .foto picture { display: block; width: 100%; height: 100%; }
 .banner .foto img { width: 100%; height: 100%; object-fit: cover; animation: kenburns 18s ease-in-out infinite alternate; }
 @keyframes kenburns { from { transform: scale(1.02); } to { transform: scale(1.12) translate(-1.5%, -1%); } }
 .banner .veu { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(247, 241, 234, .92) 0%, rgba(247, 241, 234, .55) 38%, rgba(247, 241, 234, 0) 65%); }
@@ -358,6 +359,7 @@ th { font-family: var(--caps); font-weight: 400; color: var(--cafe); font-size: 
     .abrir-menu { display: grid; }
     .topo .linha1 { height: 64px; grid-template-columns: auto 1fr auto; }
     .topo .logo { font-size: 13px; }
+    .topo { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--branco); }
     .player { position: fixed; left: 12px; bottom: 22px; z-index: 44; box-shadow: 0 8px 24px rgba(0, 0, 0, .12); }
     .player .nome-musica { display: none; }
     .painel-musica { top: auto; bottom: 70px; left: 12px; }
