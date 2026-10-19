@@ -243,7 +243,8 @@
         if (!escolhaOk()) { e.preventDefault(); return; }
         const p = atual;
         const tam = [escolha.tipo !== 'calcinha' ? 'Sutiã ' + escolha.sutia : '', escolha.tipo !== 'sutia' ? 'Calcinha ' + escolha.calcinha : ''].filter(Boolean).join(' · ');
-        const msg = `Olá, Juliana! Quero comprar na Ju Intimates ♡\n\n• 1x ${nomeTipo[escolha.tipo]} ${p.nome} (${tam}) – ${real(precoDe(p, escolha.tipo))}\n\nPode me passar as formas de pagamento e o frete?`;
+        const valor = precoDe(p, escolha.tipo), f = calcularFrete(valor);
+        const msg = `Olá, Juliana! Quero comprar na Ju Intimates ♡\n\n• 1x ${nomeTipo[escolha.tipo]} ${p.nome} (${tam}) – ${real(valor)}\n${f && !f.erro ? textoFrete(f) + '\nTotal: ' + real(valor + f.cobrar) : 'Meu CEP é: '}\n\nPode me passar as formas de pagamento?`;
         $('#j-agora').href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(msg);
     };
     $('#j-adicionar').onclick = () => {
@@ -257,11 +258,52 @@
         if (ja) ja.qtd++; else sacola.push({ chave, id: p.id, tipo: escolha.tipo, tam, preco: precoDe(p, escolha.tipo), qtd: 1 });
         guardar(); desenharSacola(); fecharProduto(); abrirSacola();
     };
+
+    /* ===== 6b) FRETE pelo CEP (tabela por região, grátis acima de R$ 299) ===== */
+    const FRETE_GRATIS = 299;
+    function regiaoDoCep(cep) {
+        const n = +cep.slice(0, 5);
+        if ((n >= 29000 && n <= 29189) || (n >= 29200 && n <= 29229)) return { nome: 'Grande Vitória', valor: 10 };
+        if (n >= 29000 && n <= 29999) return { nome: 'Espírito Santo', valor: 18 };
+        if ((n >= 1000 && n <= 19999) || (n >= 20000 && n <= 28999) || (n >= 30000 && n <= 39999)) return { nome: 'Sudeste', valor: 25 };
+        if ((n >= 70000 && n <= 76799) || (n >= 78000 && n <= 79999) || (n >= 80000 && n <= 99999)) return { nome: 'Sul e Centro-Oeste', valor: 32 };
+        if ((n >= 40000 && n <= 69999) || (n >= 76800 && n <= 77999)) return { nome: 'Norte e Nordeste', valor: 40 };
+        return null;
+    }
+    let cepSalvo = '';
+    try { cepSalvo = localStorage.getItem('ju-cep') || ''; } catch (e) { }
+    const formatarCep = v => { const d = v.replace(/\D/g, '').slice(0, 8); return d.length > 5 ? d.slice(0, 5) + '-' + d.slice(5) : d; };
+    function calcularFrete(subtotal) {
+        const d = cepSalvo.replace(/\D/g, '');
+        if (d.length !== 8) return null;
+        const r = regiaoDoCep(d); if (!r) return { erro: true };
+        return { ...r, cep: formatarCep(d), cobrar: subtotal >= FRETE_GRATIS ? 0 : r.valor };
+    }
+    const textoFrete = f => !f || f.erro ? 'Frete: a calcular' : `Frete (${f.nome}, CEP ${f.cep}): ${f.cobrar ? real(f.cobrar) : 'GRÁTIS'}`;
+    $('#cep').value = formatarCep(cepSalvo);
+    $('#cep').addEventListener('input', e => { e.target.value = formatarCep(e.target.value); });
+    $('#cep-form').addEventListener('submit', e => {
+        e.preventDefault();
+        cepSalvo = $('#cep').value.replace(/\D/g, '');
+        try { localStorage.setItem('ju-cep', cepSalvo); } catch (er) { }
+        desenharSacola();
+    });
     function desenharSacola() {
         const qtd = sacola.reduce((s, i) => s + i.qtd, 0);
         const cont = $('#contador'); cont.hidden = !qtd; cont.textContent = qtd;
         const total = sacola.reduce((s, i) => s + i.preco * i.qtd, 0);
-        $('#soma').textContent = real(total);
+        const frete = calcularFrete(total);
+        const info = $('#cep-info'), fv = $('#frete-valor');
+        info.classList.remove('erro');
+        if (!frete) { fv.textContent = 'informe o CEP'; info.textContent = total >= FRETE_GRATIS ? 'Seu pedido já tem frete grátis ♡' : `Frete grátis acima de ${real(FRETE_GRATIS)}. Faltam ${real(FRETE_GRATIS - total)}`; }
+        else if (frete.erro) { fv.textContent = 'CEP não encontrado'; info.textContent = 'Confira o CEP digitado.'; info.classList.add('erro'); }
+        else {
+            fv.innerHTML = frete.cobrar ? real(frete.cobrar) : '<span class="gratis">GRÁTIS</span>';
+            info.textContent = frete.cobrar ? `${frete.nome} · faltam ${real(FRETE_GRATIS - total)} para o frete grátis` : `${frete.nome} · frete grátis ♡`;
+        }
+        $('#subtotal').textContent = real(total);
+        const totalFinal = total + (frete && !frete.erro ? frete.cobrar : 0);
+        $('#soma').textContent = real(totalFinal);
         $('#itens').innerHTML = !sacola.length
             ? '<div class="vazia"><b>Sua sacola está vazia</b>Que tal escolher algo lindo pra você?</div>'
             : sacola.map((i, n) => {
@@ -272,7 +314,7 @@
                     <span class="valor">${real(i.preco * i.qtd)}</span></div>`;
             }).join('');
         const linhas = sacola.map(i => `• ${i.qtd}x ${nomeTipo[i.tipo]} ${(PRODUTOS.find(x => x.id === i.id) || {}).nome} (${i.tam}) – ${real(i.preco * i.qtd)}`);
-        const msg = `Olá, Juliana! Quero fazer um pedido na Ju Intimates ♡\n\n${linhas.join('\n')}\n\nTotal: ${real(total)}\n\nPode me passar as formas de pagamento e o frete?`;
+        const msg = `Olá, Juliana! Quero fazer um pedido na Ju Intimates ♡\n\n${linhas.join('\n')}\n\nSubtotal: ${real(total)}\n${textoFrete(frete)}\nTotal: ${real(totalFinal)}\n\nPode me passar as formas de pagamento?`;
         const fim = $('#finalizar');
         fim.href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(msg);
         fim.style.opacity = sacola.length ? 1 : .45;
