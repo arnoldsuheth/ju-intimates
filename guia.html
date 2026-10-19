@@ -93,8 +93,8 @@
                 <div class="perguntas revelar">
                     <details><summary>Posso comprar só o sutiã ou só a calcinha?</summary><p>Pode sim! Todas as peças podem ser compradas separadas. No conjunto completo você economiza.</p></details>
                     <details><summary>Quais as formas de pagamento?</summary><p>Pix ou cartão. A Juliana te passa tudo no WhatsApp depois que você enviar o pedido.</p></details>
-                    <details><summary>Como funciona a entrega?</summary><p>O frete é calculado pelo seu CEP e combinado no WhatsApp. Tudo vai em embalagem discreta, sem nada que identifique o conteúdo.</p></details>
-                    <details><summary>E se não servir?</summary><p>Por higiene, lingerie só é trocada se estiver sem uso e com a etiqueta. Fale com a Juliana em até 7 dias depois de receber.</p></details>
+                    <details><summary>Como funciona a entrega?</summary><p>Digite seu CEP na sacola e o frete aparece na hora: Grande Vitória R$ 10, resto do ES R$ 18, Sudeste R$ 25, Sul e Centro-Oeste R$ 32, Norte e Nordeste R$ 40. Acima de R$ 299 o frete é grátis. Tudo vai em embalagem discreta. <a href="politicas.html#frete">Ver detalhes</a></p></details>
+                    <details><summary>E se não servir?</summary><p>Você tem 7 dias depois de receber para trocar ou devolver. Por higiene, a peça precisa estar sem uso, com etiqueta e com o protetor. Defeito: até 30 dias. <a href="politicas.html#trocas">Ver política completa</a></p></details>
                     <details><summary>As fotos são das peças reais?</summary><p>Esta é a coleção de lançamento, com fotos ilustrativas. As fotos das peças da loja chegam em breve.</p></details>
                 </div>
             </div>
@@ -116,7 +116,7 @@
                     <p>Lingerie pra você se sentir ainda mais bela, do jeito que você é. Atendimento com carinho, de mulher pra mulher.</p>
                 </div>
                 <div><h4>LOJA</h4><ul><li><a href="colecao.html">Toda a coleção</a></li><li><a href="colecao.html?cat=conjunto">Conjuntos</a></li><li><a href="colecao.html?cat=sutia">Sutiãs</a></li><li><a href="colecao.html?cat=calcinha">Calcinhas</a></li></ul></div>
-                <div><h4>AJUDA</h4><ul><li><a href="guia.html">Guia de tamanhos</a></li><li><a href="guia.html#como-comprar">Como comprar</a></li><li><a href="guia.html#duvidas">Dúvidas frequentes</a></li></ul></div>
+                <div><h4>AJUDA</h4><ul><li><a href="guia.html">Guia de tamanhos</a></li><li><a href="guia.html#como-comprar">Como comprar</a></li><li><a href="guia.html#duvidas">Dúvidas frequentes</a></li><li><a href="politicas.html#frete">Entrega e frete</a></li><li><a href="politicas.html#trocas">Trocas e devoluções</a></li><li><a href="politicas.html#privacidade">Privacidade</a></li></ul></div>
                 <div><h4>CONTATO</h4><ul><li><a href="https://wa.me/5527998979722" target="_blank" rel="noopener">WhatsApp (27) 99897-9722</a></li><li><a href="https://www.instagram.com/julianasuheth/" target="_blank" rel="noopener">Instagram</a></li><li><a href="sobre.html">Sobre a Ju</a></li></ul></div>
             </div>
             <div class="base"><span>© 2026 Ju Intimates · Moda Íntima · Espírito Santo</span><span>Coleção de lançamento: fotos ilustrativas (Unsplash) e preços de exemplo · Site feito com amor pelo Studio Evolution Tech</span></div>
@@ -171,10 +171,13 @@
         <header><h3>SUA SACOLA</h3><button class="fechar" id="fechar-sacola" type="button" aria-label="Fechar a sacola">×</button></header>
         <div class="itens" id="itens"></div>
         <footer>
+            <form class="cep" id="cep-form" autocomplete="postal-code"><label for="cep">CALCULE O FRETE</label><div><input id="cep" inputmode="numeric" maxlength="9" placeholder="00000-000" aria-label="Seu CEP"><button type="submit">OK</button></div><small id="cep-info">Frete grátis acima de R$ 299</small></form>
+            <div class="linha-soma"><span>Subtotal</span><span id="subtotal">R$ 0,00</span></div>
+            <div class="linha-soma"><span>Frete</span><span id="frete-valor">informe o CEP</span></div>
             <div class="soma"><span>TOTAL</span><b id="soma">R$ 0,00</b></div>
             <a class="btn btn-whats" id="finalizar" href="#" target="_blank" rel="noopener">Finalizar pelo WhatsApp <svg class="seta" viewBox="0 0 18 10" aria-hidden="true"><path d="M0 5h16M12 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></a>
             <button class="btn btn-claro" id="continuar" type="button">Continuar comprando</button>
-            <small>Frete e pagamento são combinados com a Juliana no WhatsApp.</small>
+            <small>Pagamento por Pix ou cartão, combinado no WhatsApp. <a href="politicas.html#trocas">Trocas e devoluções</a></small>
         </footer>
     </aside>
 
